@@ -7,6 +7,7 @@ function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
         isAuth: false,
         user: null,
+        jwt: '',
     });
     const navigate = useNavigate();
 
@@ -17,21 +18,25 @@ function AuthContextProvider({children}) {
         logout: logout,
     }
 
-    function login() {
+    function login(response) {
         setAuth({
-            ...,
+            ...auth,
             isAuth: true,
+            user: response.user,
+            jwt: response.token,
         });
-        console.log('Gebruiker is ingelogd!');
+        console.log(`${response.user.email} is ingelogd!`);
         navigate("/profile");
     }
 
     function logout() {
         setAuth({
-            ...,
+            ...auth,
             isAuth: false,
+            user: null,
+            jwt: '',
         });
-        console.log('Gebruiker is uitgelogd!')
+        console.log(`${auth.user.email} is uitgelogd!`)
         navigate("/");
     }
 

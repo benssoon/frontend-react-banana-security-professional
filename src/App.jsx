@@ -8,6 +8,14 @@ import SignUp from './pages/SignUp';
 import './App.css';
 import {AuthContext} from './context/AuthContext';
 
+export const constants = {
+    PROJECT_ID: {
+        key: 'novi-education-project-id',
+        value: 'c0a2656f-ad70-45b7-ba18-5a4c3d923b7e'
+    },
+    API: 'https://novi-backend-api-wgsgz.ondigitalocean.app/api/',
+}
+
 function App() {
     const {isAuth} = useContext(AuthContext);
 
@@ -17,7 +25,7 @@ function App() {
             <div className="content">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/profile" element={isAuth === true ? <Profile /> : <Navigate to="/" />} />
+                    <Route path="/profile" element={isAuth ? <Profile /> : <Navigate to="/" />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                 </Routes>
