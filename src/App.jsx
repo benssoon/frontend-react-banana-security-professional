@@ -18,7 +18,6 @@ export const constants = {
 
 function App() {
     const {isAuth} = useContext(AuthContext);
-
     return (
         <>
             <NavBar />

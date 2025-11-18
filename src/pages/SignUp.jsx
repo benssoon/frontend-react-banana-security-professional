@@ -8,7 +8,7 @@ function SignUp() {
     const [data, setData] = useState({
         email: '',
         password: '',
-        roles: ['user'],
+        roles: ['user', 'admin'],
     });
     const navigate = useNavigate();
 
